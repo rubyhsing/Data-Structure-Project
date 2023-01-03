@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.lang.StringEscapeUtils;
 
 /**
  * Servlet implementation class Handler
@@ -31,11 +32,13 @@ public class Handler extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.forward(request, response);
 	}
-
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -51,8 +54,23 @@ public class Handler extends HttpServlet {
 		String query = (String) request.getParameter("query");
 		String platform = (String) request.getParameter("platform");
 
-		ArrayList<WebPage> pages = new ArrayList<WebPage>();
-		ArrayList<WebTree> trees = (new GoogleQuery(query,platform).query());
+
+		
+		String search = query;
+		
+		search = StringEscapeUtils.unescapeHtml(query);
+		
+		try {
+			search = GoogleQuery.translate("auto", "en", query);
+			search = search.replace(" ", "+");
+		}
+		catch (Exception e) {
+			System.out.println("Translate error");
+		}
+		ArrayList<WebTree> trees = (new GoogleQuery(search,platform).query());
+		
+		
+
 		for (WebTree tree:trees) {
 			SecondLayer childFinder = new SecondLayer(tree);
 			tree = childFinder.AddChild();

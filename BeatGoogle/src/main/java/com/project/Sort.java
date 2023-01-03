@@ -31,7 +31,7 @@ public class Sort {
 		
 		while (j <= rightbound) {
 			
-			if ( lst.get(j).root.webPage.score < pk ){
+			if ( lst.get(j).root.webPage.score > pk ){
 				
 				i += 1;
 				swap(i,j);

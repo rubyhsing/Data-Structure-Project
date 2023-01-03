@@ -34,11 +34,14 @@ public class WordCounter {
 		if (url.contains("https://hiskio.com/courses/")) {
 			
 			
-			Pattern pattern = Pattern.compile("https://hiskio.com/courses/(.*)(/lectures)");
+			Pattern pattern = Pattern.compile("https://hiskio.com/courses/(.*)");
 			Matcher matcher = pattern.matcher(url);
 			if (matcher.find()) {
 				String courseid = (matcher.group(1));
-				url = String.format("https://api.hiskio.com/v2/courses/%s/chapters", courseid) ;
+				if (courseid.contains("/")) {
+					courseid = courseid.split("/")[0];
+				}
+				url = String.format("https://api.hiskio.com/v2/courses/%s", courseid) ;
 			}
 		}
 		
@@ -49,6 +52,9 @@ public class WordCounter {
     	
 		URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
+		conn.setConnectTimeout(1000);
+		conn.setReadTimeout(1000);
+
 		InputStream in = conn.getInputStream();
 		BufferedReader br = new BufferedReader(new InputStreamReader(in));
 	
@@ -67,8 +73,10 @@ public class WordCounter {
     	if (content == "") {
     		return 0;
     	}
+    	
 		if (content == null){
 			System.out.println("Count URL"+this.urlStr);
+			
 			try {
 				content = fetchContent();
 			}

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -38,6 +39,8 @@ public class SecondLayer {
 
 		URL u = new URL(url);
 		URLConnection conn = u.openConnection();
+		conn.setConnectTimeout(1000);
+		conn.setReadTimeout(1000);
 		//set HTTP header
 		//conn.setRequestProperty("User-agent", "Chrome/107.0.5304.107");
 		InputStream in = conn.getInputStream();
@@ -62,7 +65,7 @@ public class SecondLayer {
 		if (url.contains("https://hahow.in/courses/")) {
 			
 			
-			Pattern pattern = Pattern.compile("https://hahow.in/courses/(.*)(/discussions)");
+			Pattern pattern = Pattern.compile("https://hahow.in/courses/(.*)(/*)");
 			Matcher matcher = pattern.matcher(url);
 			if (matcher.find()) {
 				String courseid = (matcher.group(1));
@@ -75,11 +78,14 @@ public class SecondLayer {
 		if (url.contains("https://hiskio.com/courses/")) {
 			
 			
-			Pattern pattern = Pattern.compile("https://hiskio.com/courses/(.*)(/lectures)");
+			Pattern pattern = Pattern.compile("https://hiskio.com/courses/(.*)");
 			Matcher matcher = pattern.matcher(url);
 			if (matcher.find()) {
 				String courseid = (matcher.group(1));
-				url = String.format("https://api.hiskio.com/v2/courses/%s/chapters", courseid) ;
+				if (courseid.contains("/")) {
+					courseid = courseid.split("/")[0];
+				}
+				url = String.format("https://api.hiskio.com/v2/courses/%s", courseid) ;
 			}
 		}
 		
@@ -95,7 +101,7 @@ public class SecondLayer {
 		// Must convert to api url first
 		url = URLConverter(url);
 		System.out.println("Converted URL" + url);
-		
+
 		try {
 			fetchContent(url);
 		}
@@ -103,6 +109,7 @@ public class SecondLayer {
 			System.out.println("Fail");
 			return tree;
 		}
+
 		
 		if (content == "") {
 			return tree;
@@ -153,11 +160,11 @@ public class SecondLayer {
 			Collections.shuffle(temp);
 		}
 		
-		else if (count >= 3) {
+		else if (count >= 2) {
 			Collections.shuffle(temp);
 		}
 		
-		for (int i = 0 ; i < Math.min(count, 3); i++) {
+		for (int i = 0 ; i < Math.min(count, 2); i++) {
 			
 			WebNode child  = new WebNode(temp.get(i));
 			System.out.println(temp.get(i).name + temp.get(i).url);

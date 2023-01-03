@@ -10,34 +10,34 @@
 		}
 		h1 {
 			font-size: 55pt;
-			color: #FADBD8;
+			color: #F1F1F1 ;
 			position: relative;
-			top: 80px;
+			top: 110px;
 		}
 		#description{
 			color: #EAF2F8;
-			font-size: 12pt;
+			font-size: 11pt;
 			font-weight: bold;
 			position: relative;
-			top: 80px;
+			top: 100px;
 		}
 		#search{
 			position: relative;
-			top: 100px;
+			top: 115px;
 		}
         #options{
 			font-family: Arial black, Times New Roman, Times;
 			font-size: 14px;
 			color: #EAF2F8;
             position: absolute;
-			top: 285px;
-			left: 510px;
+			top: 292px;
+			left: 455px;
         }
 		*{
 			margin: 0;
 		}
 		.bg{
-			background-image: url("background.jpg");
+			background-image: url("searchBg.png");
 			height: 100vh;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -54,14 +54,14 @@
 		<form method="post" action="Handler">
 			<div id="search" align="center"> 
 				<input id="input" type="text" style="width:220px; height:25px" placeholder='search "AI"' value="" name="query">
-				<input id="go" type="submit" value="go" style="height:31px">
+				<input id="go" type="submit" value="&#128269;" style="height:31px; width:48px">
 			</div>
 			<div id="options">
-				<input type="radio" name="platform" value="hahow" checked>Hahow<br>
-				<input type="radio" name="platform" value="coursera">Coursera<br>
-				<input type="radio" name="platform" value="udemy">Udemy<br>
-				<input type="radio" name="platform" value=" hiskio">HiSKIO<br>
-				<input type="radio" name="platform" value="tibame">TibaMe<br>
+				<input type="radio" name="platform" value="hahow" checked>Hahow
+				<input type="radio" name="platform" value="coursera">Coursera
+				<input type="radio" name="platform" value="udemy">udemy
+				<input type="radio" name="platform" value="hiskio">HiSKIO
+				<input type="radio" name="platform" value="tibame">TibaMe
 			</div>
 		</form>
 	</div>

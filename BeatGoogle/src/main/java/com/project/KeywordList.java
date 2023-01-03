@@ -9,16 +9,16 @@ public class KeywordList {
 		
 		keywordList.add(new Keyword("Aritificial",5));
 		keywordList.add(new Keyword("Intelligence",5));
-		keywordList.add(new Keyword("人工智慧",5));
+		//keywordList.add(new Keyword("人工智慧",5));
 		
 		keywordList.add(new Keyword("Machine Learning",4));
-		keywordList.add(new Keyword("機器學習",4));
+		//keywordList.add(new Keyword("機器學習",4));
 		
 		keywordList.add(new Keyword("Deep Learning",4));
-		keywordList.add(new Keyword("深度學習",4));	
+		//keywordList.add(new Keyword("深度學習",4));	
 		
 		keywordList.add(new Keyword("NLP",3));
-		keywordList.add(new Keyword("自然語言",3));
+		//keywordList.add(new Keyword("自然語言",3));
 		
 		keywordList.add(new Keyword("Python",5));
 		keywordList.add(new Keyword("Pytorch",1));
@@ -31,14 +31,14 @@ public class KeywordList {
 //		keywordList.add(new Keyword("PS",-3));
 		keywordList.add(new Keyword("Photoshop",-3));
 		keywordList.add(new Keyword("Design",-3));
-		keywordList.add(new Keyword("設計",-3));
+		//keywordList.add(new Keyword("設計",-3));
 		
 		keywordList.add(new Keyword("Animation",-3));
-		keywordList.add(new Keyword("動畫",-3));
+		//keywordList.add(new Keyword("動畫",-3));
 		
 		keywordList.add(new Keyword("ACP",-3));
 		keywordList.add(new Keyword("vector",-3));
-		keywordList.add(new Keyword("向量",-3));
+		//keywordList.add(new Keyword("向量",-3));
 	}
 	
 	
