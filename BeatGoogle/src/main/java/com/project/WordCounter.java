@@ -21,11 +21,15 @@ public class WordCounter {
 		if (url.contains("https://hahow.in/courses/")) {
 			
 			
-			Pattern pattern = Pattern.compile("https://hahow.in/courses/(.*)(/*)");
+			Pattern pattern = Pattern.compile("https://hahow.in/courses/(.*)");
 			Matcher matcher = pattern.matcher(url);
 			if (matcher.find()) {
 				String courseid = (matcher.group(1));
+				if (courseid.contains("/")) {
+					courseid = courseid.split("/")[0];
+				}
 				url = String.format("https://api.hahow.in/api/courses/%s", courseid) ;
+				
 			}
 			
 			

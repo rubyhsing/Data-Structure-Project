@@ -51,12 +51,17 @@ public class Handler extends HttpServlet {
 		}
 		*/
 		
+		
+		double st = System.currentTimeMillis();		
+		
 		String query = (String) request.getParameter("query");
 		String platform = (String) request.getParameter("platform");
 
 
 		
 		String search = query;
+		//&#1575;&#1604;&#1584;&#1603;&#1575;&#1569;&#1575;&#1604;&#1575;&#1589;&#1591;&#1606;&#1575;&#1593;&#1610;
+		//  الذكاءالاصطناعي
 		
 		search = StringEscapeUtils.unescapeHtml(query);
 		
@@ -95,7 +100,7 @@ public class Handler extends HttpServlet {
 		System.out.println("Our Search Engine");
 		
 		System.out.println("Done");
-
+		System.out.println("Time Elapse: " + (System.currentTimeMillis()-st)/1000 + "Seconds");
 		request.setAttribute("data", trees);
 		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
 		rd.forward(request, response);

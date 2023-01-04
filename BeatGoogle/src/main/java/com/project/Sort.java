@@ -24,14 +24,14 @@ public class Sort {
 		//1. Implement QuickSort algorithm
 		if (leftbound >= rightbound) {return;}
 		
-		double pk = lst.get(rightbound).root.webPage.score;
+		double pk = lst.get(rightbound).root.nodeScore;
 
 		int i = leftbound - 1;
 		int j = leftbound;
 		
 		while (j <= rightbound) {
 			
-			if ( lst.get(j).root.webPage.score > pk ){
+			if ( lst.get(j).root.nodeScore > pk ){
 				
 				i += 1;
 				swap(i,j);

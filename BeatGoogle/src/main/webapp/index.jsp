@@ -23,15 +23,15 @@
 		}
 		#search{
 			position: relative;
-			top: 115px;
+			top: 125px;
 		}
         #options{
 			font-family: Arial black, Times New Roman, Times;
 			font-size: 14px;
 			color: #EAF2F8;
             position: absolute;
-			top: 292px;
-			left: 455px;
+			top: 315px;
+			left: 485px;
         }
 		*{
 			margin: 0;
@@ -59,9 +59,10 @@
 			<div id="options">
 				<input type="radio" name="platform" value="hahow" checked>Hahow
 				<input type="radio" name="platform" value="coursera">Coursera
-				<input type="radio" name="platform" value="udemy">udemy
+				<input type="radio" name="platform" value="udemy">Udemy
 				<input type="radio" name="platform" value="hiskio">HiSKIO
 				<input type="radio" name="platform" value="tibame">TibaMe
+				<input type="radio" name="platform" value="course">Course
 			</div>
 		</form>
 	</div>

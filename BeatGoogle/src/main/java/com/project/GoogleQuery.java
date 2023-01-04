@@ -29,13 +29,13 @@ public class GoogleQuery
 	public GoogleQuery(String searchKeyword)
 	{
 		this.searchKeyword = searchKeyword;
-		this.url = "http://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=20";
+		this.url = "http://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=15";
 	}
 	
 	public GoogleQuery(String searchKeyword, String topic) 
 	{
 		this.searchKeyword = searchKeyword;
-		this.url = String.format("http://www.google.com/search?q=%s\"%s\"&oe=utf8&num=20",searchKeyword,topic);
+		this.url = String.format("http://www.google.com/search?q=%s\"%s\"&oe=utf8&num=15",searchKeyword,topic);
 	}
 	
 	private String fetchContent() throws IOException

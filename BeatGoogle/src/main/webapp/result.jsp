@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     
 <%@ page import = "java.util.*" %>
 <!--  To let jsp file knows our WebPage class -->
@@ -47,7 +47,8 @@
 		}
 		.bg{
 			background-image: url("resultBg.jpg");
-			background-attachment: fixed;
+			height: 100vh;
+			background-attachment: scroll;
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
@@ -66,7 +67,7 @@
 			%>
 			<tr>
 				<td><a href=<%= t.root.webPage.url %> target="_blank"><%= t.root.webPage.name %></a></td>
-				<td style="text-align: center"><%= t.root.webPage.score %></td>
+				<td style="text-align: center"><%= t.root.nodeScore %></td>
 			</tr>
 			<% 
 				} 
