@@ -25,6 +25,7 @@ public class GoogleQuery
 	public String searchKeyword;
 	public String url;
 	public String content;
+	public ArrayList<String> relatedUrls = new ArrayList<String>();
 	
 	public GoogleQuery(String searchKeyword)
 	{
@@ -62,8 +63,11 @@ public class GoogleQuery
 	public void FetchContentJSoup() throws IOException {
 		Document doc = Jsoup.connect(url).userAgent("Chrome/107.0.5304.107").get();
 		Elements lis = doc.select("div");
+		
+		
 		lis = lis.select(".kCrYT");
 		
+
 		for(Element li : lis)
 		{
 			try 
@@ -112,6 +116,14 @@ public class GoogleQuery
 		//select particular element(tag) which you want 
 		Elements lis = doc.select("div");
 		lis = lis.select(".kCrYT");
+		
+		Elements lis2 = doc.select("div");
+		lis2 = lis2.select("span").select(".lRVwie");
+		for (Element li : lis2) {
+			relatedUrls.add(li.text());
+			System.out.println("Related Url"+li.text());
+		}
+		
 		
 		for(Element li : lis)
 		{

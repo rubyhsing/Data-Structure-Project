@@ -68,11 +68,16 @@ public class Handler extends HttpServlet {
 		try {
 			search = GoogleQuery.translate("auto", "en", query);
 			search = search.replace(" ", "+");
+			System.out.println("Search Word"+search);
 		}
 		catch (Exception e) {
 			System.out.println("Translate error");
 		}
-		ArrayList<WebTree> trees = (new GoogleQuery(search,platform).query());
+		
+		search += "+AI";
+		
+		GoogleQuery G = new GoogleQuery(search,platform);
+		ArrayList<WebTree> trees = (G.query());
 		
 		
 
@@ -100,8 +105,11 @@ public class Handler extends HttpServlet {
 		System.out.println("Our Search Engine");
 		
 		System.out.println("Done");
+		System.out.println("Related Keyword" + G.relatedUrls);
+
 		System.out.println("Time Elapse: " + (System.currentTimeMillis()-st)/1000 + "Seconds");
 		request.setAttribute("data", trees);
+		request.setAttribute("related", G.relatedUrls);
 		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
 		rd.forward(request, response);
 	}

@@ -6,6 +6,8 @@
 <%@ page import = "com.project.*" %>
 
 <% ArrayList<WebTree> trees = (ArrayList<WebTree>) request.getAttribute("data"); %>
+<% ArrayList<String> relatives = (ArrayList<String>) request.getAttribute("related"); %>
+
 
 <!DOCTYPE html>
 <html>
@@ -68,6 +70,22 @@
 			<tr>
 				<td><a href=<%= t.root.webPage.url %> target="_blank"><%= t.root.webPage.name %></a></td>
 				<td style="text-align: center"><%= t.root.nodeScore %></td>
+			</tr>
+			<% 
+				} 
+			%>
+			
+		</table>
+		
+		<table>
+			<tr>
+				<th style="width:90%">Related Keywords</th>
+			</tr>
+			<%		
+				for (String r: relatives) { 
+			%>
+			<tr>
+				<td style="text-align: center"><%= r %></td>
 			</tr>
 			<% 
 				} 
