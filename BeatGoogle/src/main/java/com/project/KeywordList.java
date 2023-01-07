@@ -26,7 +26,7 @@ public class KeywordList {
 		keywordList.add(new Keyword("Sklearn",1));
 		//keywordList.add(new Keyword("Course",5));
 
-		/*
+		
 		
 		keywordList.add(new Keyword("Adobe",-4));
 		keywordList.add(new Keyword("Illustrator",-4));
@@ -41,7 +41,7 @@ public class KeywordList {
 		keywordList.add(new Keyword("ACP",-3));
 		keywordList.add(new Keyword("vector",-3));
 		//keywordList.add(new Keyword("¦V¶q",-3));
-		*/
+		
 	}
 	
 	
